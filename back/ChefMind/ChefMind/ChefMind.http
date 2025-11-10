@@ -1,0 +1,6 @@
+@ChefMind_HostAddress = http://localhost:5116
+
+GET {{ChefMind_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
