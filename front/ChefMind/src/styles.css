@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url(../public/background/—Pngtree—a\ open\ book\ with\ blank_18851524.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* para que se quede fijo al hacer scroll */
+  background-repeat: no-repeat;
+  margin: 0;
+}

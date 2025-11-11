@@ -1,1 +1,18 @@
-<p>foro works!</p>
+<h2>Foro Comunitario</h2>
+<form (ngSubmit)="addPost()">
+  <input [(ngModel)]="newPost.username" name="username" placeholder="Tu nombre" required />
+  <textarea [(ngModel)]="newPost.message" name="message" placeholder="Mensaje..." required></textarea>
+  <button type="submit" class="btn-primary">Publicar</button>
+</form>
+
+<div *ngIf="forum.length; else emptyForum">
+  <div *ngFor="let post of forum" class="forum-post">
+    <div class="username">{{ post.username }}</div>
+    <div class="timestamp">{{ post.createdAt | date: 'short' }}</div>
+    <div class="message">{{ post.message }}</div>
+  </div>
+</div>
+
+<ng-template #emptyForum>
+  <p>No hay mensajes todavía.</p>
+</ng-template>
