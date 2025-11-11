@@ -1,0 +1,25 @@
+<h2>Gestión de Inventario</h2>
+<form (ngSubmit)="addIngredient()">
+  <div class="form-grid">
+    <input [(ngModel)]="newIngredient.name" name="name" placeholder="Ingrediente" required />
+    <input [(ngModel)]="newIngredient.quantity" name="quantity" type="number" placeholder="Cantidad" required />
+    <input [(ngModel)]="newIngredient.unit" name="unit" placeholder="Unidad" required />
+    <button type="submit" class="btn-primary">Añadir</button>
+  </div>
+</form>
+
+<div *ngIf="inventory.length; else emptyInventory">
+  <div *ngFor="let item of inventory" class="inventory-item" [class.low-stock]="item.quantity">
+    <h4>{{ item.name }}</h4>
+    <p>Cantidad: {{ item.quantity }} {{ item.unit }}</p>
+    <div>
+      <button (click)="updateQuantity(item, 1)">+</button>
+      <button (click)="updateQuantity(item, -1)">-</button>
+      <button (click)="deleteIngredient(item)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyInventory>
+  <p>Tu despensa está vacía.</p>
+</ng-template>

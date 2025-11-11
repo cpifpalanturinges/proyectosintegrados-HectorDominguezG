@@ -1,0 +1,65 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.btn-primary {
+  background: #9c0909;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #830606;
+}
+
+.inventory-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inventory-item.low-stock {
+  border-color: #e53935;
+  background: #ffebee;
+}
+
+.inventory-item h4 {
+  margin: 0;
+}
+
+button {
+  margin-right: 0.3rem;
+  border: none;
+  background: #ddd;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ccc;
+}
+
+.empty-state {
+  text-align: center;
+  color: #888;
+  padding: 1.5rem;
+}

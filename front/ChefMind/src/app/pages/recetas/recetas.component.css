@@ -1,0 +1,39 @@
+.search-box {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.recipe-card {
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-card h3 {
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+
+.author {
+  font-style: italic;
+  color: #777;
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}

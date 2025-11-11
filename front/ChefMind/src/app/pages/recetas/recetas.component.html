@@ -1,0 +1,23 @@
+<div class="search-box">
+  <input
+    type="text"
+    placeholder="Buscar por ingredientes (ej: tomate, cebolla)..."
+    (input)="onSearch($event)"
+  />
+</div>
+
+<div *ngIf="filteredRecipes.length; else noRecipes">
+  <div *ngFor="let recipe of filteredRecipes" class="recipe-card">
+    <h3>{{ recipe.name }}</h3>
+    <p><strong>Ingredientes:</strong> {{ recipe.ingredients }}</p>
+    <p><strong>Instrucciones:</strong> {{ recipe.instructions }}</p>
+    <p class="author">Por: {{ recipe.author }}</p>
+  </div>
+</div>
+
+<ng-template #noRecipes>
+  <div class="empty-state">
+    <h3>No hay recetas todavía</h3>
+    <p>¡Añade tu primera receta en la pestaña correspondiente!</p>
+  </div>
+</ng-template>

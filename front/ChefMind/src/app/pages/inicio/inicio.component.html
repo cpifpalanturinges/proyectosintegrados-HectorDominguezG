@@ -1,17 +1,16 @@
-<div class="container">
-  <header class="header">
-    <h1>Chef's Mind</h1>
-  </header>
+<div class="book-layout">
+  <div class="left-panel">
+    <h2>Chef's Mind</h2>
+    <ul>
+      <li><a routerLink="/recetas">Recetas</a></li>
+      <li><a routerLink="/despensa">Despensa</a></li>
+      <li><a routerLink="/foro">Foro</a></li>
+    </ul>
+  </div>
 
-  <nav class="nav-tabs">
-    <button routerLink = "">Recetas</button>
-    <button routerLink = "">Mi Despensa</button>
-    <button routerLink = "">Foro Comunitario</button>
-    <button routerLink = "">Añadir Receta</button>
-  </nav>
-
-  <main class="content">
-
-  </main>
+  <div class="right-panel">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+
 
