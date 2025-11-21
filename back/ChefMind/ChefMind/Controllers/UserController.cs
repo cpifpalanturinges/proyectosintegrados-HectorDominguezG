@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ChefMind.Models.Database.Dto;
+using ChefMind.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChefMind.Controllers
@@ -7,5 +9,18 @@ namespace ChefMind.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        UserService _userService;
+
+        UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<UserDto> GetUserById(int id)
+        {
+
+        }
+
     }
 }
