@@ -19,7 +19,14 @@ namespace ChefMind.Controllers
         [HttpGet("{id}")]
         public async Task<UserDto> GetUserById(int id)
         {
+            UserDto user = await _userService.GetUserById(id);
+            if (user == null)
+            {
+                HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+                return null;
+            }
 
+            return user;
         }
 
     }
