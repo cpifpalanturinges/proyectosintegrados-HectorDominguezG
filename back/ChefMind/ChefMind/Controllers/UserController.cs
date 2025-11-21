@@ -28,6 +28,5 @@ namespace ChefMind.Controllers
 
             return user;
         }
-
     }
 }
