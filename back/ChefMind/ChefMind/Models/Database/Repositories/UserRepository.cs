@@ -5,5 +5,7 @@ namespace ChefMind.Models.Database.Repositories
 {
     public class UserRepository : Repository<User, int>
     {
+        public UserRepository(ChefsMindContext context) : base(context) { }
+
     }
 }
