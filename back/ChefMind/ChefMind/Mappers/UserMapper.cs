@@ -1,4 +1,5 @@
-﻿using ChefMind.Models.Database.Dto;
+﻿using ChefMind.Helpers;
+using ChefMind.Models.Database.Dto;
 using ChefMind.Models.Database.Entities;
 
 namespace ChefMind.Mappers
@@ -13,6 +14,18 @@ namespace ChefMind.Mappers
                 Name = user.UserName,
                 Email = user.Email,
                 Role = user.Role,
+            };
+        }
+        public User ToEntity(UserRegister newUser)
+        {
+            PasswordHelper passwordService = new PasswordHelper();
+
+            return new User
+            {
+                UserName = newUser.UserName,
+                Email = newUser.Email,
+                Password = passwordService.Hash(newUser.Password),
+                Role = "user"
             };
         }
     }
