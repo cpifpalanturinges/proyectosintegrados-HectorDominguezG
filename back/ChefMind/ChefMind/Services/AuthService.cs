@@ -1,8 +1,10 @@
-﻿using ChefMind.Mappers;
+﻿using ChefMind.Helpers;
+using ChefMind.Mappers;
 using ChefMind.Models.Database;
 using ChefMind.Models.Database.Dto;
 using ChefMind.Models.Database.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -73,6 +75,23 @@ namespace ChefMind.Services
             }
 
             return null;
+        }
+
+        public async Task<string> Login(UserLogin sentUser)
+        {
+            PasswordHelper passwordService = new PasswordHelper();
+
+            sentUser.Password = passwordService.Hash(sentUser.Password);
+            User user = await _unitOfWork.UserRepository.GetUserByCredentialAsync(sentUser.UserNameOrEmail);
+
+            if (user == null) return null;
+
+            if (user.Password != sentUser.Password)
+                return null;
+
+            String token = ObtainToken(user);
+
+            return token;
         }
 
         public bool IsEmail(string email)
