@@ -1,4 +1,5 @@
 ﻿using ChefMind.Models.Database.Dto;
+using ChefMind.Models.Database.Entities;
 using ChefMind.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,8 +20,19 @@ namespace ChefMind.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<string>> RegisterUserAsync([FromBody] UserRegister userRegister)
         {
-            User newUser = await _authService
-            if (userRegister != null) {
+            User newUser = await _authService.Register(userRegister);
+            if (newUser != null)
+            {
+                string stringToken = _authService.ObtainToken(newUser);
+                return Ok(new
+                {
+                    accessToken = stringToken
+                });
+            }
+            else
+            {
+                return Unauthorized();
+            }
 
         }
     }
