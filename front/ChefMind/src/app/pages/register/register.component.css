@@ -68,3 +68,9 @@
   font-weight: bold;
   text-decoration: none;
 }
+.toLogin {
+    background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
