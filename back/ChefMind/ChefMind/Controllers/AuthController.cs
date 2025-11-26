@@ -1,8 +1,11 @@
-﻿using ChefMind.Models.Database.Dto;
+﻿using System.Collections;
+using ChefMind.Models.Database.Dto;
 using ChefMind.Models.Database.Entities;
 using ChefMind.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+
 
 namespace ChefMind.Controllers
 {
@@ -33,6 +36,26 @@ namespace ChefMind.Controllers
             {
                 return Unauthorized();
             }
+
+        }
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> LoginUser([FromBody] UserLogin userLogin)
+        {
+
+            if (userLogin == null || string.IsNullOrEmpty(userLogin.UserNameOrEmail) || string.IsNullOrEmpty(userLogin.Password))
+            {
+                return Unauthorized();
+            }
+
+
+            String token = await _authService.Login(userLogin);
+
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(token);
 
         }
     }
