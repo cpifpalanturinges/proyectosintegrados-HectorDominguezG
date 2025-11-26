@@ -10,7 +10,7 @@ namespace ChefMind.Services
         UnitOfWork _unitOfWork;
         UserMapper _userMapper;
 
-        UserService (UnitOfWork unitOfWork, UserMapper userMapper)
+        public UserService (UnitOfWork unitOfWork, UserMapper userMapper)
         {
             unitOfWork = _unitOfWork;
             userMapper = _userMapper;
