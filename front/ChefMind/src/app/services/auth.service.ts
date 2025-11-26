@@ -57,5 +57,12 @@ export class AuthService {
         console.log("Error en el registro")
         return null;
     }
+    
+  }
+  async logout(): Promise<void> {
+    console.log("Logging out");
+    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+    this.apiService.jwt = null;
   }
 }
