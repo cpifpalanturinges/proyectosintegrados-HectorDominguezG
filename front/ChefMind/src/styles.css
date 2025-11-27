@@ -1,6 +1,5 @@
 body {
-  background-image: url(../public/background/—Pngtree—a\ open\ book\ with\ blank_18851524.png);
-  background-size: cover;
+    background-size: cover;
   background-position: center;
   background-attachment: fixed; /* para que se quede fijo al hacer scroll */
   background-repeat: no-repeat;
