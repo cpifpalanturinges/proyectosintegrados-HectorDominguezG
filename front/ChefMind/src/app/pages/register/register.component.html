@@ -6,35 +6,35 @@
       <div class="input-group">
       <span class="material-icons">person</span>
       <input type="text" placeholder="Usuario" formControlName="username">
-      <small *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
-        Debe ingresar un nombre de usuario válido.
-      </small>
     </div>
+    <small *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+      Debe ingresar un nombre de usuario válido.
+    </small>
 
     <div class="input-group">
       <span class="material-icons">mail</span>
       <input type="email" placeholder="Correo" formControlName="email">
-      <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-        Debe ingresar un email válido.
-      </small>
     </div>
+    <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+      Debe ingresar un email válido.
+    </small>
 
     <div class="input-group">
       <span class="material-icons">lock</span>
       <input type="password" placeholder="Contraseña" formControlName="password">
-      <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-        Debe ingresar una contraseña válida.
-      </small>
     </div>
+    <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+      Debe ingresar una contraseña válida.
+    </small>
 
     <div class="input-group">
       <span class="material-icons">lock</span>
       <input type="password" placeholder="Repetir Contraseña" formControlName="password2">
-      <small
-        *ngIf="form.get('password2')?.touched && (form.get('password2')?.invalid || form.errors?.['passwordMismatch'])">
-        Las contraseñas no coinciden.
-      </small>
     </div>
+    <small
+      *ngIf="form.get('password2')?.touched && (form.get('password2')?.invalid || form.errors?.['passwordMismatch'])">
+      Las contraseñas no coinciden.
+    </small>
 
           <div class="remember-row">
         <label class="remember-me" for="remember-checkbox">
