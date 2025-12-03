@@ -4,7 +4,7 @@
       <h2>Iniciar Sesión</h2>
 
       <div class="input-group">
-        <span class="material-icons">letter</span>
+        <span class="material-icons">mail</span>
         <input type="text" placeholder="Correo" formControlName="email">
         <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
           Debes ingresar un email válido.
@@ -20,7 +20,7 @@
       </div>
 
       <div class="remember-container">
-        <input type="checkbox" id="rememberLogin" [(ngModel)]="remember">
+        <input type="checkbox" id="rememberLogin" [(ngModel)]="remember" [ngModelOptions]="{ standalone: true }">
         <label for="rememberLogin">Recordar</label>
       </div>
 

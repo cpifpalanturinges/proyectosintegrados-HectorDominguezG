@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
+import { Logindto } from '../../models/logindto';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,23 @@ export class LoginComponent {
     }
   }
   public async submit(){
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const data: Logindto = {
+      emailOrUserName: this.form.get('email')?.value,
+      password: this.form.get('password')?.value,
+      remember: this.remember,
+    };
+
+    try {
+      await this.authService.login(data);
+      await this.router.navigateByUrl('');
+    } catch (error) {
+      console.error('Error en login:', error);
+    }
 
   }
 }
