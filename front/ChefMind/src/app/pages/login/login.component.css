@@ -119,3 +119,9 @@
 .remember-checkbox:checked + .checkmark::after {
   display: block;
 }
+small {
+    color: red;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 3px;
+}

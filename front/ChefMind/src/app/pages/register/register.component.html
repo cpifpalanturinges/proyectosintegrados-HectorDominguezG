@@ -2,25 +2,47 @@
   <div class="form-box">
     <h2>Registro</h2>
 
-    <div class="input-group">
+    <form (submit)="submit()" [formGroup]="form">
+      <div class="input-group">
       <span class="material-icons">person</span>
-      <input type="text" placeholder="Usuario">
+      <input type="text" placeholder="Usuario" formControlName="username">
+      <small *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+        Debe ingresar un nombre de usuario válido.
+      </small>
     </div>
 
     <div class="input-group">
       <span class="material-icons">mail</span>
-      <input type="email" placeholder="Correo">
+      <input type="email" placeholder="Correo" formControlName="email">
+      <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        Debe ingresar un email válido.
+      </small>
     </div>
 
     <div class="input-group">
       <span class="material-icons">lock</span>
-      <input type="password" placeholder="Contraseña">
+      <input type="password" placeholder="Contraseña" formControlName="password">
+      <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+        Debe ingresar una contraseña válida.
+      </small>
     </div>
 
     <div class="input-group">
       <span class="material-icons">lock</span>
-      <input type="password" placeholder="Repetir Contraseña">
+      <input type="password" placeholder="Repetir Contraseña" formControlName="password2">
+      <small
+        *ngIf="form.get('password2')?.touched && (form.get('password2')?.invalid || form.errors?.['passwordMismatch'])">
+        Las contraseñas no coinciden.
+      </small>
     </div>
+
+          <div class="remember-row">
+        <label class="remember-me" for="remember-checkbox">
+          <input type="checkbox" id="remember-checkbox" class="remember-checkbox" [(ngModel)]="remember" [ngModelOptions]="{ standalone: true }">
+          <span class="checkmark"></span>
+          Recordar
+        </label>
+      </div>
 
     <button class="btn">Registrarse</button>
 
@@ -28,5 +50,7 @@
       ¿Ya tienes cuenta?
       <button class="toLogin"><a routerLink="/login">Inicia sesión</a></button>
     </p>
+    </form>
+    
   </div>
 </div>

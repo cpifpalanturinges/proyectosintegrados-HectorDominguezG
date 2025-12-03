@@ -74,3 +74,61 @@
   padding: 0;
   cursor: pointer;
 }
+
+.remember-row {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.remember-checkbox {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4a3325;      
+  border-radius: 4px;             
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.remember-checkbox:checked + .checkmark {
+  background-color: #4a3325;      
+  border-color: #4a3325;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.remember-checkbox:checked + .checkmark::after {
+  display: block;
+}
+
+small {
+    color: red;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 3px;
+}
