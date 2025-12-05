@@ -12,8 +12,8 @@ namespace ChefMind.Services
 
         public UserService (UnitOfWork unitOfWork, UserMapper userMapper)
         {
-            unitOfWork = _unitOfWork;
-            userMapper = _userMapper;
+            _unitOfWork = unitOfWork;
+            _userMapper = userMapper;
         }
 
         public async Task<UserDto> GetUserById(int id)
