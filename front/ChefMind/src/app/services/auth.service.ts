@@ -18,7 +18,7 @@ export class AuthService {
 
   async login(data: Logindto): Promise<AuthResponse>{
     try{
-      const request: Result<AuthResponse> = await this.apiService.post<AuthResponse>(`Auth/login`, data);
+      const request: Result<AuthResponse> = await this.apiService.post<AuthResponse>(`api/Auth/login`, data);
       const result: AuthResponse = request.data
 
       this.apiService.jwt = result.token;
@@ -40,7 +40,7 @@ export class AuthService {
 
   async register(data: RegisterDto): Promise<AuthResponse>{
     try {
-      const request: Result<AuthResponse> = await this.apiService.post<AuthResponse>(`Auth/register`, data);
+      const request: Result<AuthResponse> = await this.apiService.post<AuthResponse>(`api/Auth/register`, data);
       const result: AuthResponse = request.data;
 
       this.apiService.jwt = result.token;

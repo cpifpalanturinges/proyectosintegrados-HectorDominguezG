@@ -1,4 +1,5 @@
 using ChefMind;
+using ChefMind.Helpers;
 using ChefMind.Mappers;
 using ChefMind.Models.Database;
 using ChefMind.Services;
@@ -48,7 +49,8 @@ builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<Settings>>().
 //Mappers
 builder.Services.AddTransient<UserMapper>();
 
-
+//Helpers
+builder.Services.AddScoped<PasswordHelper>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -89,10 +91,12 @@ static async Task SeedDataBase(IServiceProvider serviceProvider)
 {
     using IServiceScope scope = serviceProvider.CreateScope();
     using ChefsMindContext irContext = scope.ServiceProvider.GetRequiredService<ChefsMindContext>();
+    PasswordHelper passwordService = scope.ServiceProvider.GetService<PasswordHelper>();
+
 
     if (irContext.Database.EnsureCreated())
     {
-        Seeder seeder = new Seeder(irContext);
+        Seeder seeder = new Seeder(irContext, passwordService);
         await seeder.SeedAsync();
     }
 }

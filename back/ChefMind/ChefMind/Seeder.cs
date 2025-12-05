@@ -1,4 +1,5 @@
-﻿using ChefMind.Models.Database;
+﻿using ChefMind.Helpers;
+using ChefMind.Models.Database;
 using ChefMind.Models.Database.Entities;
 
 namespace ChefMind
@@ -6,9 +7,11 @@ namespace ChefMind
     public class Seeder
     {
         public ChefsMindContext _chefsMindContext;
-        public Seeder(ChefsMindContext chefsMindContext)
+        public PasswordHelper _passwordHelper;
+        public Seeder(ChefsMindContext chefsMindContext, PasswordHelper passwordHelper)
         {
             this._chefsMindContext = chefsMindContext;
+            this._passwordHelper = passwordHelper;
         }
 
         public async Task SeedAsync()
@@ -27,7 +30,7 @@ namespace ChefMind
                     new User(){
                         UserName = "Test",
                         Email = "test@gmail.com",
-                        Password = "password",
+                        Password = _passwordHelper.Hash("password"),
                         Role = "admin"
                     }
                 ];
