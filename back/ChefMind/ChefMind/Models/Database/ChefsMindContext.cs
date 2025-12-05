@@ -1,39 +1,27 @@
 ﻿using ChefMind.Models.Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace ChefMind.Models.Database
 {
     public class ChefsMindContext : DbContext
     {
-        private const string DATABASE_PATH = "ChefsMind.db";
+        public DbSet<Ingredient> Ingredient { get; set; }
+        public DbSet<Recipe> Recipe { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredient { get; set; }
+        public DbSet<ShoppingList> ShoppingList { get; set; }
+        public DbSet<User> User { get; set; }
 
-        private readonly Settings _settings;
-
-        DbSet<Ingredient> Ingredient {  get; set; }
-        DbSet<Recipe> Recipe { get; set; }
-        DbSet<RecipeIngredient> RecipeIngredient { get; set; }
-        DbSet<ShoppingList> ShoppingList { get; set; }
-        DbSet<User> User { get; set; }
-
-        public ChefsMindContext(IOptions<Settings> options)
+        public ChefsMindContext(DbContextOptions<ChefsMindContext> options)
+            : base(options)
         {
-            _settings = options.Value;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<RecipeIngredient>()
+                .HasKey(ri => new { ri.RecipeId, ri.IngredientId });
 
-            string serverConnection = "";
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-
-
-            #if DEBUG
-            options.UseSqlite($"DataSource={baseDir}{DATABASE_PATH}");
-            #else
-                options.UseMySql(serverConnection,ServerVersion.AutoDetect(serverConnection));
-            #endif
+            base.OnModelCreating(modelBuilder);
         }
-
     }
 }

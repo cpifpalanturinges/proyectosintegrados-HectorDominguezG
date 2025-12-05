@@ -11,7 +11,7 @@ namespace ChefMind.Controllers
     {
         UserService _userService;
 
-        UserController(UserService userService)
+        public UserController(UserService userService)
         {
             _userService = userService;
         }

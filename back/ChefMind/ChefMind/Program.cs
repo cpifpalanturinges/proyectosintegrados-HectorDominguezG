@@ -2,6 +2,7 @@ using ChefMind;
 using ChefMind.Mappers;
 using ChefMind.Models.Database;
 using ChefMind.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -26,7 +27,11 @@ builder.Services.AddAuthentication()
 
 
 //Base de datos
-builder.Services.AddScoped<ChefsMindContext>();
+builder.Services.AddDbContext<ChefsMindContext>(options =>
+{
+    options.UseSqlite($"Data Source=ChefsMind.db");
+});
+
 builder.Services.AddScoped<UnitOfWork>();
 
 
@@ -75,4 +80,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+await SeedDataBase(app.Services);
+
+
 app.Run();
+
+static async Task SeedDataBase(IServiceProvider serviceProvider)
+{
+    using IServiceScope scope = serviceProvider.CreateScope();
+    using ChefsMindContext irContext = scope.ServiceProvider.GetRequiredService<ChefsMindContext>();
+
+    if (irContext.Database.EnsureCreated())
+    {
+        Seeder seeder = new Seeder(irContext);
+        await seeder.SeedAsync();
+    }
+}
+
