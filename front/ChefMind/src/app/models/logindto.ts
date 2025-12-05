@@ -1,5 +1,5 @@
 export interface Logindto {
-    emailOrUserName: string,
+    userNameOrEmail: string,
     password: string,
     remember: boolean
 }

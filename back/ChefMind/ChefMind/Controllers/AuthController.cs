@@ -39,8 +39,9 @@ namespace ChefMind.Controllers
 
         }
         [HttpPost("login")]
-        public async Task<ActionResult<string>> LoginUser([FromBody] UserLogin userLogin)
+        public async Task<ActionResult<Response>> LoginUser([FromBody] UserLogin userLogin)
         {
+            Response response = new();
 
             if (userLogin == null || string.IsNullOrEmpty(userLogin.UserNameOrEmail) || string.IsNullOrEmpty(userLogin.Password))
             {
@@ -55,7 +56,8 @@ namespace ChefMind.Controllers
                 return Unauthorized();
             }
 
-            return Ok(token);
+            response.token = token;
+            return Ok(response);
 
         }
     }

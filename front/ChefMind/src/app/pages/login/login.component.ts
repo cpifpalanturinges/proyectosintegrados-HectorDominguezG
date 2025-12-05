@@ -38,7 +38,7 @@ export class LoginComponent {
     }
 
     const data: Logindto = {
-      emailOrUserName: this.form.get('email')?.value,
+      userNameOrEmail: this.form.get('email')?.value,
       password: this.form.get('password')?.value,
       remember: this.remember,
     };
