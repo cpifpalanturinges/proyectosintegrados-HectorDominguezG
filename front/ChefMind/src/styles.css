@@ -1,7 +1,14 @@
-body {
-    background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* para que se quede fijo al hacer scroll */
-  background-repeat: no-repeat;
+html, body {
   margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-image: url(../public/background/acc1da4d-258b-4be7-ac10-eac0150ff234.png);
+  background-size: cover;          /* que ocupe toda la pantalla */
+  background-position: center;     /* centrado */
+  background-repeat: no-repeat;
+  background-attachment: fixed;    /* efecto “fondo fijo” */
 }

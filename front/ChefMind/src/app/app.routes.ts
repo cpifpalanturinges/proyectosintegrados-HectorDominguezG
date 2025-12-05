@@ -7,10 +7,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes = [
-    {path: '', component: InicioComponent},
-    {path: 'recetas', component: RecetasComponent},
-    {path: 'despensa', component: DespensaComponent},
-    {path: 'foro', component: ForoComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent}
+    {
+        path: '',
+        component: InicioComponent,
+        children: [
+            {path: 'recetas', component: RecetasComponent},
+            {path: 'despensa', component: DespensaComponent},
+            {path: 'foro', component: ForoComponent},
+            {path: 'login', component: LoginComponent},
+            {path: 'register', component: RegisterComponent}
+        ]
+    }
 ];

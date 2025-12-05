@@ -1,75 +1,159 @@
+/* ===== Fuente y fondo general ===== */
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background: #d4c2a4; /* fondo "mesa" */
+}
+
+/* ===== LIBRO (contenedor general) ===== */
 .book-layout {
   display: flex;
-  width: 100%;
-  height: 100vh;
-  background-size: cover;       /* La imagen cubre todo el fondo */
-  background-position: center;  /* Centrada */
-  background-repeat: no-repeat; /* No se repite */
+  width: 95%;
+  max-width: 1100px;
+  margin: 40px auto;        /* separa el libro de los bordes de la ventana */
+  min-height: 80vh;         /* altura del libro */
+  background: #f7f0e5;      /* color base de las páginas */
+  border-radius: 18px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  overflow: hidden;
+  position: relative;
 }
 
+/* línea del pliegue del libro */
+.book-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(0,0,0,0.06);
+  pointer-events: none;
+}
+
+/* ===== PÁGINAS ===== */
+
+.left-panel,
+.right-panel {
+  padding: 40px 50px;
+  box-sizing: border-box;
+  flex: 1;                  /* AHORA MISMOS ANCHOS PARA QUE ENCAJEN CON LA LÍNEA */
+}
+
+/* página izquierda */
 .left-panel {
-  flex: 1;
-  background: #f0e6d2;
-  padding: 2rem;
-  border-right: 4px solid #d3b78f;
+  background: #f6ecdd;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
-.left-panel h2 {
-  margin-bottom: 2rem;
-  color: #4a3c26;
+/* página derecha */
+.right-panel {
+  background: #f7f0e5;
 }
+
+/* lo que salga en router-outlet puede ocupar toda la página derecha */
+.right-panel > * {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== CABECERA IZQUIERDA (título + icono usuario) ===== */
+
+.title-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.title-login h1 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #3b2617;
+}
+
+/* botón del icono de login */
+.login {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.login .material-icons {
+  font-size: 26px;
+  color: #3b2617;
+}
+
+.login:hover {
+  background: rgba(0,0,0,0.05);
+  transform: translateY(-1px);
+}
+
+/* ===== MENÚ IZQUIERDO (índice) ===== */
 
 .left-panel ul {
   list-style: none;
   padding: 0;
-  width: 100%;
+  margin: 0;
+  margin-top: 10px;
 }
 
 .left-panel li {
-  margin-bottom: 1rem;
+  margin: 14px 0;
 }
 
 .left-panel a {
   text-decoration: none;
-  color: #4a3c26;
-  font-weight: bold;
-  display: block;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background 0.3s;
+  font-size: 1.05rem;
+  color: #4a2e1a;
+  position: relative;
+  padding-bottom: 3px;
 }
 
-.left-panel a:hover,
-.left-panel a.active {
-  background: #d3b78f;
-  color: white;
+/* subrayado animado */
+.left-panel a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #4a2e1a;
+  transition: width 0.2s ease;
 }
 
-.right-panel {
-  flex: 2;
-  padding: 2rem;
-  background: #fffdf8;
-  overflow-y: auto;
+.left-panel a:hover::after {
+  width: 40%;
 }
-.title-login{
-  display: flex;
-  width: 100%;
-  gap: 90px;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-.login{
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-}
-.material-icons{
-  font-size: 40px;
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .book-layout {
+    flex-direction: column;
+    max-width: 600px;
+    min-height: auto;
+  }
+
+  .book-layout::before {
+    display: none; /* quitamos la línea central en móvil */
+  }
+
+  .left-panel,
+  .right-panel {
+    padding: 25px 22px;
+  }
+
+  .title-login {
+    justify-content: center;
+    gap: 16px;
+  }
 }
