@@ -5,6 +5,7 @@ import { DespensaComponent } from './pages/despensa/despensa.component';
 import { ForoComponent } from './pages/foro/foro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SobreNosotrosComponent } from './pages/sobrenosotros/sobrenosotros.component';
 
 export const routes: Routes = [
     {
@@ -15,7 +16,8 @@ export const routes: Routes = [
             {path: 'despensa', component: DespensaComponent},
             {path: 'foro', component: ForoComponent},
             {path: 'login', component: LoginComponent},
-            {path: 'register', component: RegisterComponent}
+            {path: 'register', component: RegisterComponent},
+            {path: 'sobrenosotros', component: SobreNosotrosComponent}
         ]
     }
 ];

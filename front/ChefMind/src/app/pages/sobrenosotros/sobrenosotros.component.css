@@ -1,0 +1,23 @@
+.about-container {
+  max-width: 500px;
+  background: rgba(255, 248, 235, 0.95);
+  padding: 22px 26px;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.about-container h2 {
+  margin-top: 0;
+  font-family: 'Playfair Display', serif;
+  color: #3b2617;
+}
+
+.about-container a {
+  color: #8b3d1a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-container a:hover {
+  text-decoration: underline;
+}
