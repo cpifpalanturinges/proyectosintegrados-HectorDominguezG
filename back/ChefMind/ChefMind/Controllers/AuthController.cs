@@ -23,14 +23,16 @@ namespace ChefMind.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<string>> RegisterUserAsync([FromBody] UserRegister userRegister)
         {
+            Response response = new();
             User newUser = await _authService.Register(userRegister);
             if (newUser != null)
             {
                 string stringToken = _authService.ObtainToken(newUser);
-                return Ok(new
-                {
-                    accessToken = stringToken
-                });
+                if (stringToken == null) {
+                    return Unauthorized();
+                }
+                response.token = stringToken;
+                return Ok(response);
             }
             else
             {

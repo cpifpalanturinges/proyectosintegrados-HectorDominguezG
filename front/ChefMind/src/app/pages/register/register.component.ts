@@ -45,8 +45,8 @@ export class RegisterComponent {
     if (this.form.invalid) return;
 
     const register: RegisterDto = {
-      username: this.form.get('nombreUsuario')?.value,
-      email: this.form.get('correo')?.value,
+      username: this.form.get('username')?.value,
+      email: this.form.get('email')?.value,
       password: this.form.get('password')?.value,
       remember: this.remember
     };
