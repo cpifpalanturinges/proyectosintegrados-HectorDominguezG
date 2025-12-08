@@ -4,6 +4,8 @@ import { RegisterDto } from '../models/register-dto';
 import { AuthResponse } from '../models/authresponse';
 import { Result } from '../models/result';
 import { Logindto } from '../models/logindto';
+import { jwtDecode } from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,8 @@ export class AuthService {
   ) { }
 
   jwt: string = '';
+  private loggedSubject = new BehaviorSubject<boolean>(this.userExists());
+  logged$ = this.loggedSubject.asObservable();
 
   async login(data: Logindto): Promise<AuthResponse>{
     try{
@@ -29,7 +33,8 @@ export class AuthService {
       } else {
         sessionStorage.setItem('token', this.jwt)
       }
-
+      
+      this.loggedSubject.next(true);
       return result;
     } catch (error)
     {
@@ -52,6 +57,7 @@ export class AuthService {
             sessionStorage.setItem('token', this.jwt);
           }
 
+          this.loggedSubject.next(true);
         return result;
     } catch (error: any) {
         console.log("Error en el registro")
@@ -64,5 +70,45 @@ export class AuthService {
     sessionStorage.removeItem('token');
     localStorage.removeItem('token');
     this.apiService.jwt = null;
+    this.loggedSubject.next(false);
+  }
+
+  localAndSessionStorage(){
+    const localtoken: string = localStorage.getItem('token')
+    const sessiontoken: string = sessionStorage.getItem('token')
+
+    if (localtoken != "" && localtoken != null || sessiontoken != "" && sessiontoken != null) {
+      
+      if (localtoken != "" && localtoken != null) {
+        return localtoken
+      }
+      else if(sessiontoken != "" && sessiontoken != null) {
+        return sessiontoken
+      }
+      else {
+        return ""
+      }
+
+    } else {
+      return ""
+    }
+  }
+  userExists(){
+    this.jwt = this.localAndSessionStorage();
+    if (this.jwt != "" && this.jwt != null) {
+
+      const decodeadoJwt: any = jwtDecode(this.jwt)
+
+      if (decodeadoJwt == "" || decodeadoJwt == null) {
+        return false
+      } else {
+        return true
+      }
+
+    } else {
+      
+      return false
+
+    }
   }
 }

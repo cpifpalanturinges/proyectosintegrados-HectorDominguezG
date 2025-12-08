@@ -2,9 +2,15 @@
   <div class="left-panel">
     <div class="title-login">
       <h1>Chef's Mind</h1>
-      <button class="login">
+      @if (logged) {
+        <button class="login">
+        <span class="material-icons" (click)="authService.logout()">logout</span>
+        </button>
+      } @else {
+        <button class="login">
         <span class="material-icons" routerLink="/login">person</span>
-      </button>
+        </button>
+      }
     </div>
     <ul>
       <li><a routerLink="/recetas">Recetas</a></li>
