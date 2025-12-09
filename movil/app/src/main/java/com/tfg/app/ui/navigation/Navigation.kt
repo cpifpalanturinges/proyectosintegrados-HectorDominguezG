@@ -8,9 +8,12 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.tfg.app.ui.menu.HomeScreen
-import com.tfg.app.ui.list.ListScreen
-import com.tfg.app.ui.camera.CameraScreen
-import com.tfg.app.ui.gallery.GalleryScreen
+import com.tfg.app.ui.forum.ForumPostScreen
+import com.tfg.app.ui.forum.ForumScreen
+import com.tfg.app.ui.pantry.PantryScreen
+import com.tfg.app.ui.recipes.AddRecipeScreen
+import com.tfg.app.ui.recipes.RecipeDetailScreen
+import com.tfg.app.ui.recipes.RecipeListScreen
 
 @Composable
 fun AppNavHost() {
