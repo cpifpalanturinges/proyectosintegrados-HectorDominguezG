@@ -8,19 +8,19 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.tfg.app.ui.usables.CustomHeader
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListScreen(navController: NavController) {
+fun ListScreen(navController: NavController, onBack: () -> Unit) {
     val items = (1..30).map { "Elemento $it" }
 
-    Scaffold(
-        topBar = { TopAppBar(title = { Text("Lista") }) }
-    ) { padding ->
+    Column {
+        CustomHeader(title = "List", onBack = onBack)
+    }
 
         LazyColumn(
             modifier = Modifier
-                .padding(padding)
+                .padding()
                 .fillMaxSize()
         ) {
             items(items) { item ->
@@ -37,4 +37,3 @@ fun ListScreen(navController: NavController) {
             }
         }
     }
-}

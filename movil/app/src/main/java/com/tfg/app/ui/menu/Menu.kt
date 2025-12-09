@@ -7,21 +7,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.tfg.app.ui.usables.CustomHeader
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Inicio") }
-            )
-        }
-    ) { padding ->
+    Column {
+        CustomHeader(title = "Inicio")
+
+        Text("Contenido de Inicio")
+    }
         Column(
             modifier = Modifier
-                .padding(padding)
+                .padding()
                 .fillMaxSize()
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center,
@@ -45,4 +43,3 @@ fun HomeScreen(navController: NavController) {
             }
         }
     }
-}

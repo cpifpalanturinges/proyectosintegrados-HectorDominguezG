@@ -1,23 +1,23 @@
 package com.tfg.app.ui.camera
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.tfg.app.ui.usables.CustomHeader
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CameraScreen(navController: NavController) {
-    Scaffold(
-        topBar = { TopAppBar(title = { Text("Cámara") }) }
-    ) { padding ->
+fun CameraScreen(navController: NavController, onBack: () -> Unit) {
+    Column {
+        CustomHeader(title = "Camara", onBack = onBack)
+    }
         Text(
             "Aquí irá CameraX en Compose",
             modifier = androidx.compose.ui.Modifier
-                .padding(padding)
                 .padding(16.dp)
         )
     }
-}
+
