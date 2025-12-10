@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Fondo general de la app (página antigua) -->
+    <color name="page_background">#F3E5C2</color>
+
+    <!-- Tarjetas (hoja envejecida) -->
+    <color name="card_background">#FFF4D4</color>
+
+    <!-- TopBar y BottomBar -->
+    <color name="primary_color">#8C3A2B</color> <!-- rojo-marrón estilo libro -->
+    <color name="primary_variant">#5D1F12</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- Textos principales -->
+    <color name="text_primary">#4E342E</color> <!-- marrón oscuro -->
+    <color name="text_secondary">#6D4C41</color> <!-- marrón medio -->
+
+    <!-- Encabezados y títulos -->
+    <color name="header_color">#5D4037</color>
+
+    <!-- Separadores y sombras suaves -->
+    <color name="divider_color">#D7CCC8</color>
+
+    <!-- Botones flotantes / FAB -->
+    <color name="fab_color">#8C3A2B</color>
+    <color name="fab_icon_color">#FFFFFF</color>
 </resources>

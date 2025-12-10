@@ -9,28 +9,33 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Color(0xFF8C3A2B),      // rojo-marrón
+    secondary = Color(0xFF5D4037),    // marrón oscuro
+    tertiary = Color(0xFFD7CCC8),     // marrón claro / separadores
+    background = Color(0xFF3E2723),   // fondo oscuro opcional
+    surface = Color(0xFF4E342E),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onTertiary = Color.Black,
+    onBackground = Color(0xFFFFF3E0),
+    onSurface = Color(0xFFFFF3E0)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
+    primary = Color(0xFF8C3A2B),
+    secondary = Color(0xFF5D4037),
+    tertiary = Color(0xFFD7CCC8),
+    background = Color(0xFFF3E5C2),  // fondo estilo papel antiguo
+    surface = Color(0xFFFFF4D4),     // tarjetas estilo hoja
     onPrimary = Color.White,
     onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    onTertiary = Color.Black,
+    onBackground = Color(0xFF4E342E),
+    onSurface = Color(0xFF4E342E)
 )
 
 @Composable

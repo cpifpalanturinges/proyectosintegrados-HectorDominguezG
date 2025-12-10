@@ -8,7 +8,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.tfg.app.ui.menu.HomeScreen
-import com.tfg.app.ui.forum.ForumPostScreen
 import com.tfg.app.ui.forum.ForumScreen
 import com.tfg.app.ui.pantry.PantryScreen
 import com.tfg.app.ui.recipes.AddRecipeScreen
@@ -36,13 +35,9 @@ fun AppNavHost() {
             AddRecipeScreen(navController)
         }
 
-        // 📌 Detalle de receta con argumento ID
-        composable(
-            route = "recipeDetail/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.LongType })
-        ) { entry ->
-            val id = entry.arguments?.getLong("id") ?: 0L
-            RecipeDetailScreen(navController, id)
+        composable("recipeDetail/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")?.toInt()!!
+            RecipeDetailScreen(recipeId = id, navController)
         }
 
         // 📌 Despensa
@@ -55,13 +50,6 @@ fun AppNavHost() {
             ForumScreen(navController)
         }
 
-        // 📌 Post del foro
-        composable(
-            route = "forumPost/{postId}",
-            arguments = listOf(navArgument("postId") { type = NavType.LongType })
-        ) { entry ->
-            val postId = entry.arguments?.getLong("postId") ?: 0L
-            ForumPostScreen(navController, postId)
-        }
+
     }
 }
