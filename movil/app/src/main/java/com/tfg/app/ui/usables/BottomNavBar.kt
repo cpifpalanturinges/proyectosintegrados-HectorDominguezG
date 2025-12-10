@@ -1,7 +1,10 @@
 package com.tfg.app.ui.usables
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -15,9 +18,9 @@ fun BottomNavBar(navController: NavController) {
 
     val items = listOf(
         BottomNavItem("home", "Inicio", Icons.Default.Home),
-        BottomNavItem("recetas", "Recetas", Icons.Default.List),
-        BottomNavItem("foro", "Foro", Icons.Default.Forum),
-        BottomNavItem("despensa", "Despensa", Icons.Default.ShoppingCart)
+        BottomNavItem("recipes", "Recetas", Icons.Default.DateRange),
+        BottomNavItem("forum", "Foro", Icons.Default.Menu),
+        BottomNavItem("pantry", "Despensa", Icons.Default.ShoppingCart)
     )
 
     val navBackStackEntry = navController.currentBackStackEntryAsState()
