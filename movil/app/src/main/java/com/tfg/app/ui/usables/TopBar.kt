@@ -34,7 +34,7 @@ fun CustomHeader(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFF6200EE))
+            .background(Color(0xFF8B3A3A))
             .statusBarsPadding()
             .padding(16.dp)
     ) {

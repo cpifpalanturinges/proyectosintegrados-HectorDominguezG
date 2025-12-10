@@ -10,6 +10,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
@@ -17,7 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 fun BottomNavBar(navController: NavController) {
 
     val items = listOf(
-        BottomNavItem("home", "Inicio", Icons.Default.Home),
+        BottomNavItem("menu", "Inicio", Icons.Default.Home),
         BottomNavItem("recipes", "Recetas", Icons.Default.DateRange),
         BottomNavItem("forum", "Foro", Icons.Default.Menu),
         BottomNavItem("pantry", "Despensa", Icons.Default.ShoppingCart)
@@ -26,7 +27,7 @@ fun BottomNavBar(navController: NavController) {
     val navBackStackEntry = navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry.value?.destination?.route
 
-    NavigationBar {
+    NavigationBar(containerColor = Color(0xFFF5E6C4)) {
         items.forEach { item ->
             NavigationBarItem(
                 icon = { Icon(item.icon, contentDescription = item.label) },
