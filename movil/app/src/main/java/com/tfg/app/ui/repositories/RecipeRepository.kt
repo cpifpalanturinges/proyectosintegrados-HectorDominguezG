@@ -24,7 +24,7 @@ class RecipeRepository {
             steps = listOf("Cortar patatas", "Freír", "Cuajar"),
             time = "30 min",
             difficulty = "Media",
-            imageRes = R.drawable.carbonara
+            imageRes = R.drawable.tortilla
         )
     )
 
